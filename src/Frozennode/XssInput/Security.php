@@ -183,7 +183,7 @@ class Security {
 			}
 			if (preg_match("/script/i", $str) OR preg_match("/xss/i", $str))
 			{
-				$str = preg_replace("#<(/*)(script|xss)(.*?)\>#si", '[removed]', $str);
+				$str = preg_replace("#<(/*)(script|xss)(.*?)\>#si", '', $str);
 			}
 		}
 		while($original != $str);
@@ -320,12 +320,12 @@ class Security {
 		 * List of never allowed strings
 		 */
 		$never_allowed_str = array(
-			'document.cookie'	=> '[removed]',
-			'document.write'	=> '[removed]',
-			'.parentNode'		=> '[removed]',
-			'.innerHTML'		=> '[removed]',
-			'window.location'	=> '[removed]',
-			'-moz-binding'		=> '[removed]',
+			'document.cookie'	=> '',
+			'document.write'	=> '',
+			'.parentNode'		=> '',
+			'.innerHTML'		=> '',
+			'window.location'	=> '',
+			'-moz-binding'		=> '',
 			'<!--'				=> '&lt;!--',
 			'-->'				=> '--&gt;',
 			'<![CDATA['			=> '&lt;![CDATA[',
@@ -344,7 +344,7 @@ class Security {
 		$str = str_replace(array_keys($never_allowed_str), $never_allowed_str, $str);
 		foreach ($never_allowed_regex as $regex)
 		{
-			$str = preg_replace('#'.$regex.'#is', '[removed]', $str);
+			$str = preg_replace('#'.$regex.'#is', '', $str);
 		}
 		return $str;
 	}//do_never_allowed
