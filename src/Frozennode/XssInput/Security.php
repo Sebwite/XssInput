@@ -238,17 +238,17 @@ class Security {
 		}
 		return $str;
 	}//xss_clean
-	/**
-	 * Remove Invisible Characters
-	 *
-	 * This prevents sandwiching null characters
-	 * between ascii characters, like Java\0script.
-	 *
-	 * @access	public
-	 * @param	string
-	 * @return	string
-	 */
-	protected static function remove_invisible_characters($str, $url_encoded = TRUE)
+    /**
+     * Remove Invisible Characters
+     *
+     * This prevents sandwiching null characters
+     * between ascii characters, like Java\0script.
+     *
+     * @param $str
+     * @param bool $url_encoded
+     * @return mixed
+     */
+    protected static function remove_invisible_characters($str, $url_encoded = TRUE)
 	{
 
 		$non_displayables = array();
